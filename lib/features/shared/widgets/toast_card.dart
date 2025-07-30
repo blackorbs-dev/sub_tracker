@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:sub_tracker/core/theme/extensions.dart';
+
+import 'svg_icon.dart';
 
 class ToastCard extends StatefulWidget {
   final String message;
@@ -28,7 +30,7 @@ class _ToastCardState extends State<ToastCard> with SingleTickerProviderStateMix
     super.initState();
     _controller.forward();
 
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 3), () {
       if(!_disposed) {
         _controller.reverse();
       }
@@ -48,18 +50,18 @@ class _ToastCardState extends State<ToastCard> with SingleTickerProviderStateMix
         child: Material(
           elevation: 8,
           borderRadius: BorderRadius.circular(8),
-          color: theme.colorScheme.tertiary,
+          color: theme.colors.primary,
           child: Container(
             margin: const EdgeInsets.only(left: 4),
             padding: const EdgeInsets.symmetric(vertical: 4),
             decoration: BoxDecoration(
-              color: theme.colorScheme.onPrimary,
+              color: theme.colors.darkSidebarForeground,
               borderRadius: BorderRadius.circular(8)
             ),
             child: Row(children: [
               Padding(
                 padding: const EdgeInsets.only(left: 12, right: 14),
-                child: SvgPicture.asset('assets/icons/ic_check_circle.svg')
+                child: SvgIcon('assets/icons/ic_check_circle.svg', color: theme.colors.primary,)
               ),
               Expanded(child: Text(
                 widget.message,

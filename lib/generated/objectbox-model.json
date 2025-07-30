@@ -1,0 +1,188 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:2284185839732206391",
+      "lastPropertyId": "7:4215574829732930127",
+      "name": "SubscriptionEntity",
+      "properties": [
+        {
+          "id": "1:4547533733438922823",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:7939121332815444472",
+          "name": "location",
+          "type": 9
+        },
+        {
+          "id": "3:109349266368894422",
+          "name": "startDate",
+          "type": 10
+        },
+        {
+          "id": "4:4557620139128668954",
+          "name": "isActive",
+          "type": 1
+        },
+        {
+          "id": "5:2825504155213193591",
+          "name": "userId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "1:3293145501846231325",
+          "relationTarget": "UserEntity"
+        },
+        {
+          "id": "6:7352776400841167892",
+          "name": "dbPlan",
+          "type": 6
+        },
+        {
+          "id": "7:4215574829732930127",
+          "name": "dbBillingType",
+          "type": 6
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:4586568370039030264",
+      "lastPropertyId": "7:1970515054192049214",
+      "name": "TransactionEntity",
+      "properties": [
+        {
+          "id": "1:9164214920391441882",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:2898130400040282352",
+          "name": "amount",
+          "type": 6
+        },
+        {
+          "id": "3:1086052963478872951",
+          "name": "description",
+          "type": 9
+        },
+        {
+          "id": "4:4528277126102437510",
+          "name": "date",
+          "type": 10
+        },
+        {
+          "id": "5:1471016733796330449",
+          "name": "walletId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "2:7984047558645741036",
+          "relationTarget": "WalletEntity"
+        },
+        {
+          "id": "6:3893161898695168961",
+          "name": "dbStatus",
+          "type": 6
+        },
+        {
+          "id": "7:1970515054192049214",
+          "name": "dbType",
+          "type": 6
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:1549719352726365344",
+      "lastPropertyId": "5:8521159399026970931",
+      "name": "UserEntity",
+      "properties": [
+        {
+          "id": "1:8857464671755793383",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:1750873255786670637",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:1063592030662200018",
+          "name": "email",
+          "type": 9
+        },
+        {
+          "id": "4:7389311645863739484",
+          "name": "password",
+          "type": 9
+        },
+        {
+          "id": "5:8521159399026970931",
+          "name": "walletId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "3:5905135413411489425",
+          "relationTarget": "WalletEntity"
+        }
+      ],
+      "relations": [
+        {
+          "id": "1:3841488743167013771",
+          "name": "subscriptions",
+          "targetId": "1:2284185839732206391"
+        }
+      ]
+    },
+    {
+      "id": "4:2573770856253852801",
+      "lastPropertyId": "3:8966368250801693930",
+      "name": "WalletEntity",
+      "properties": [
+        {
+          "id": "1:1299693340638874414",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4034837265348218827",
+          "name": "balance",
+          "type": 8
+        },
+        {
+          "id": "3:8966368250801693930",
+          "name": "userId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "4:6090700000921499391",
+          "relationTarget": "UserEntity"
+        }
+      ],
+      "relations": [
+        {
+          "id": "2:3506487815683845604",
+          "name": "transactions",
+          "targetId": "2:4586568370039030264"
+        }
+      ]
+    }
+  ],
+  "lastEntityId": "4:2573770856253852801",
+  "lastIndexId": "4:6090700000921499391",
+  "lastRelationId": "2:3506487815683845604",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

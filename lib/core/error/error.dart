@@ -6,6 +6,7 @@ sealed class DataError implements Error {
   const factory DataError.unknown() = UnknownError;
   const factory DataError.serialization() = SerializationError;
   const factory DataError.timeout() = TimeoutError;
+  const factory DataError.invalidCredentials() = InvalidCredentialsError;
   const factory DataError.message(String message) = ErrorMessage;
 }
 
@@ -19,6 +20,10 @@ class SerializationError extends DataError {
 
 class TimeoutError extends DataError {
   const TimeoutError();
+}
+
+class InvalidCredentialsError extends DataError {
+  const InvalidCredentialsError();
 }
 
 class ErrorMessage extends DataError {

@@ -12,6 +12,7 @@ extension ExceptionLogger on Object {
 
 extension Message on DataError{
   String message() => switch(this){
+    InvalidCredentialsError() => 'Invalid credentials',
     ErrorMessage(:final message) => message,
     _ => 'Oops, something went wrong, please try again.'
   };

@@ -21,13 +21,9 @@ final darkTheme = ThemeData(
       background: Color(0xFF020617),
       foreground: Color(0xFFf8fafc),
       primary: Color(0xFFf8fafc),
-      primaryForeground: Color(0xFF0f172a),
       secondary: Color(0xFF1e293b),
       mutedForeground: Color(0xFF94a3b8),
       destructive: Color(0xFF7f1d1d),
-      ring: Color(0xFFcbd5e1),
-
-      sidebarBackground: Color(0xFF0f172a),
       sidebarForeground: Color(0xFFf1f5f9),
       sidebarPrimary: Color(0xFF3b82f6),
     ),

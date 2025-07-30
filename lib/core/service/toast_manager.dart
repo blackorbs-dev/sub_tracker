@@ -17,7 +17,7 @@ class ToastManager{
 
     _currentEntry = OverlayEntry(builder: (context) => ToastCard(message: message));
     Overlay.of(context).insert(_currentEntry!);
-    _timer = Timer(const Duration(seconds: 3), () {
+    _timer = Timer(const Duration(milliseconds: 4000), () {
       _clearCurrent();
     });
   }
