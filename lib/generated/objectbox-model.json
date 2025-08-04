@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:2284185839732206391",
-      "lastPropertyId": "7:4215574829732930127",
+      "lastPropertyId": "10:1160421623030205960",
       "name": "SubscriptionEntity",
       "properties": [
         {
@@ -13,11 +13,6 @@
           "name": "id",
           "type": 6,
           "flags": 1
-        },
-        {
-          "id": "2:7939121332815444472",
-          "name": "location",
-          "type": 9
         },
         {
           "id": "3:109349266368894422",
@@ -46,6 +41,24 @@
           "id": "7:4215574829732930127",
           "name": "dbBillingType",
           "type": 6
+        },
+        {
+          "id": "8:7113103446610014779",
+          "name": "locationId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "5:258773617853319458",
+          "relationTarget": "LocationEntity"
+        },
+        {
+          "id": "9:5490094217754223780",
+          "name": "dbBillingMethod",
+          "type": 6
+        },
+        {
+          "id": "10:1160421623030205960",
+          "name": "endDate",
+          "type": 10
         }
       ],
       "relations": []
@@ -64,7 +77,7 @@
         {
           "id": "2:2898130400040282352",
           "name": "amount",
-          "type": 6
+          "type": 8
         },
         {
           "id": "3:1086052963478872951",
@@ -172,17 +185,50 @@
           "targetId": "2:4586568370039030264"
         }
       ]
+    },
+    {
+      "id": "5:5437293505860261517",
+      "lastPropertyId": "6:337946690423837759",
+      "name": "LocationEntity",
+      "properties": [
+        {
+          "id": "1:7981884918857172429",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "4:3611350905408430747",
+          "name": "address",
+          "type": 9
+        },
+        {
+          "id": "5:5905397887448144470",
+          "name": "latitude",
+          "type": 8
+        },
+        {
+          "id": "6:337946690423837759",
+          "name": "longitude",
+          "type": 8
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "4:2573770856253852801",
-  "lastIndexId": "4:6090700000921499391",
+  "lastEntityId": "5:5437293505860261517",
+  "lastIndexId": "5:258773617853319458",
   "lastRelationId": "2:3506487815683845604",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
   "modelVersionParserMinimum": 5,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    7939121332815444472,
+    1805084963447297860,
+    314592210023181642
+  ],
   "retiredRelationUids": [],
   "version": 1
 }

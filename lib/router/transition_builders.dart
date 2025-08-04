@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 CustomTransitionPage<T> fadeTransition<T>({
   required LocalKey key,
   required Widget child,
-  Duration duration = const Duration(milliseconds: 400),
+  Duration duration = const Duration(milliseconds: 500),
 }) {
   return CustomTransitionPage<T>(
     key: key,
@@ -22,13 +22,13 @@ CustomTransitionPage<T> slideTransition<T>({
   required LocalKey key,
   required Widget child,
   Offset beginOffset = const Offset(0, 0.3),
-  Duration duration = const Duration(milliseconds: 300),
+  Duration duration = const Duration(milliseconds: 500),
 }) {
   return CustomTransitionPage<T>(
     key: key,
     child: child,
     transitionDuration: duration,
-    reverseTransitionDuration: const Duration(milliseconds: 200),
+    reverseTransitionDuration: const Duration(milliseconds: 300),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       final offset = Tween<Offset>(
         begin: beginOffset,

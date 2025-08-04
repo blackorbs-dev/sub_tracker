@@ -1,10 +1,9 @@
 import 'package:intl/intl.dart';
 
-extension IntFormatting on int {
-  /// format a number in thousands, millions, billions, etc.
-  String format() => NumberFormat.decimalPattern().format(this);
+extension PriceFormatting on double {
+  String formatPrice() => NumberFormat.currency(symbol: '\$').format(this);
 }
 
-extension TimeFormatting on DateTime {
-  String toTimeString() => DateFormat.yMMMEd().format(this);
+extension DateFormatting on DateTime {
+  String format({String pattern = 'dd/MM/yyyy'}) => DateFormat(pattern).format(this);
 }

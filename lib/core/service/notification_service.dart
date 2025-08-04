@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class NotificationService {
-  final FlutterLocalNotificationsPlugin _plugin;
+  final _plugin = FlutterLocalNotificationsPlugin();
   final _notificationId = 1;
 
-  NotificationService(this._plugin) { _initialise(); }
+  NotificationService() { _initialise(); }
 
   void _initialise() async{
     final initializationSettings = InitializationSettings(
@@ -14,10 +14,10 @@ class NotificationService {
       iOS: DarwinInitializationSettings(),
     );
     await _plugin.initialize(initializationSettings);
-    requestNotificationPermission();
+    // requestNotificationPermission();
   }
 
-  void showWorkoutNotification(String message) {
+  void showNotification(String message) {
     _plugin.show(
       _notificationId,
       "Subscription Update",
@@ -35,9 +35,9 @@ class NotificationService {
     _plugin.cancel(_notificationId);
   }
 
-  void requestNotificationPermission() {
+  Future<void> requestNotificationPermission() async{
     if (Platform.isAndroid) {
-      _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
+      await _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
           ?.requestNotificationsPermission();
     }
   }

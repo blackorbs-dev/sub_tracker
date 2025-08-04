@@ -14,10 +14,11 @@ import 'package:objectbox/internal.dart'
 import 'package:objectbox/objectbox.dart' as obx;
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
-import '../features/shared/data/entities/subscription_entity.dart';
-import '../features/shared/data/entities/transaction_entity.dart';
-import '../features/shared/data/entities/user_entity.dart';
-import '../features/shared/data/entities/wallet_entity.dart';
+import '../features/shared/data/user_entity.dart';
+import '../features/subscription/data/entity/location_entity.dart';
+import '../features/subscription/data/entity/subscription_entity.dart';
+import '../features/wallet/data/entity/transaction_entity.dart';
+import '../features/wallet/data/entity/wallet_entity.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
@@ -25,7 +26,7 @@ final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
     id: const obx_int.IdUid(1, 2284185839732206391),
     name: 'SubscriptionEntity',
-    lastPropertyId: const obx_int.IdUid(7, 4215574829732930127),
+    lastPropertyId: const obx_int.IdUid(10, 1160421623030205960),
     flags: 0,
     properties: <obx_int.ModelProperty>[
       obx_int.ModelProperty(
@@ -33,12 +34,6 @@ final _entities = <obx_int.ModelEntity>[
         name: 'id',
         type: 6,
         flags: 1,
-      ),
-      obx_int.ModelProperty(
-        id: const obx_int.IdUid(2, 7939121332815444472),
-        name: 'location',
-        type: 9,
-        flags: 0,
       ),
       obx_int.ModelProperty(
         id: const obx_int.IdUid(3, 109349266368894422),
@@ -72,6 +67,26 @@ final _entities = <obx_int.ModelEntity>[
         type: 6,
         flags: 0,
       ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(8, 7113103446610014779),
+        name: 'locationId',
+        type: 11,
+        flags: 520,
+        indexId: const obx_int.IdUid(5, 258773617853319458),
+        relationTarget: 'LocationEntity',
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(9, 5490094217754223780),
+        name: 'dbBillingMethod',
+        type: 6,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(10, 1160421623030205960),
+        name: 'endDate',
+        type: 10,
+        flags: 0,
+      ),
     ],
     relations: <obx_int.ModelRelation>[],
     backlinks: <obx_int.ModelBacklink>[],
@@ -91,7 +106,7 @@ final _entities = <obx_int.ModelEntity>[
       obx_int.ModelProperty(
         id: const obx_int.IdUid(2, 2898130400040282352),
         name: 'amount',
-        type: 6,
+        type: 8,
         flags: 0,
       ),
       obx_int.ModelProperty(
@@ -214,6 +229,40 @@ final _entities = <obx_int.ModelEntity>[
     ],
     backlinks: <obx_int.ModelBacklink>[],
   ),
+  obx_int.ModelEntity(
+    id: const obx_int.IdUid(5, 5437293505860261517),
+    name: 'LocationEntity',
+    lastPropertyId: const obx_int.IdUid(6, 337946690423837759),
+    flags: 0,
+    properties: <obx_int.ModelProperty>[
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(1, 7981884918857172429),
+        name: 'id',
+        type: 6,
+        flags: 1,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(4, 3611350905408430747),
+        name: 'address',
+        type: 9,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(5, 5905397887448144470),
+        name: 'latitude',
+        type: 8,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(6, 337946690423837759),
+        name: 'longitude',
+        type: 8,
+        flags: 0,
+      ),
+    ],
+    relations: <obx_int.ModelRelation>[],
+    backlinks: <obx_int.ModelBacklink>[],
+  ),
 ];
 
 /// Shortcut for [obx.Store.new] that passes [getObjectBoxModel] and for Flutter
@@ -254,13 +303,17 @@ Future<obx.Store> openStore({
 obx_int.ModelDefinition getObjectBoxModel() {
   final model = obx_int.ModelInfo(
     entities: _entities,
-    lastEntityId: const obx_int.IdUid(4, 2573770856253852801),
-    lastIndexId: const obx_int.IdUid(4, 6090700000921499391),
+    lastEntityId: const obx_int.IdUid(5, 5437293505860261517),
+    lastIndexId: const obx_int.IdUid(5, 258773617853319458),
     lastRelationId: const obx_int.IdUid(2, 3506487815683845604),
     lastSequenceId: const obx_int.IdUid(0, 0),
     retiredEntityUids: const [],
     retiredIndexUids: const [],
-    retiredPropertyUids: const [],
+    retiredPropertyUids: const [
+      7939121332815444472,
+      1805084963447297860,
+      314592210023181642,
+    ],
     retiredRelationUids: const [],
     modelVersion: 5,
     modelVersionParserMinimum: 5,
@@ -270,22 +323,26 @@ obx_int.ModelDefinition getObjectBoxModel() {
   final bindings = <Type, obx_int.EntityDefinition>{
     SubscriptionEntity: obx_int.EntityDefinition<SubscriptionEntity>(
       model: _entities[0],
-      toOneRelations: (SubscriptionEntity object) => [object.user],
+      toOneRelations: (SubscriptionEntity object) => [
+        object.user,
+        object.location,
+      ],
       toManyRelations: (SubscriptionEntity object) => {},
       getId: (SubscriptionEntity object) => object.id,
       setId: (SubscriptionEntity object, int id) {
         object.id = id;
       },
       objectToFB: (SubscriptionEntity object, fb.Builder fbb) {
-        final locationOffset = fbb.writeString(object.location);
-        fbb.startTable(8);
+        fbb.startTable(11);
         fbb.addInt64(0, object.id);
-        fbb.addOffset(1, locationOffset);
         fbb.addInt64(2, object.startDate.millisecondsSinceEpoch);
         fbb.addBool(3, object.isActive);
         fbb.addInt64(4, object.user.targetId);
         fbb.addInt64(5, object.dbPlan);
         fbb.addInt64(6, object.dbBillingType);
+        fbb.addInt64(7, object.location.targetId);
+        fbb.addInt64(8, object.dbBillingMethod);
+        fbb.addInt64(9, object.endDate.millisecondsSinceEpoch);
         fbb.finish(fbb.endTable());
         return object.id;
       },
@@ -298,24 +355,24 @@ obx_int.ModelDefinition getObjectBoxModel() {
           4,
           0,
         );
-        final locationParam = const fb.StringReader(
-          asciiOptimization: true,
-        ).vTableGet(buffer, rootOffset, 6, '');
-        final startDateParam = DateTime.fromMillisecondsSinceEpoch(
-          const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0),
-        );
         final isActiveParam = const fb.BoolReader().vTableGet(
           buffer,
           rootOffset,
           10,
           false,
         );
+        final startDateParam = DateTime.fromMillisecondsSinceEpoch(
+          const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0),
+        );
+        final endDateParam = DateTime.fromMillisecondsSinceEpoch(
+          const fb.Int64Reader().vTableGet(buffer, rootOffset, 22, 0),
+        );
         final object =
             SubscriptionEntity(
                 id: idParam,
-                location: locationParam,
-                startDate: startDateParam,
                 isActive: isActiveParam,
+                startDate: startDateParam,
+                endDate: endDateParam,
               )
               ..dbPlan = const fb.Int64Reader().vTableGetNullable(
                 buffer,
@@ -326,6 +383,11 @@ obx_int.ModelDefinition getObjectBoxModel() {
                 buffer,
                 rootOffset,
                 16,
+              )
+              ..dbBillingMethod = const fb.Int64Reader().vTableGetNullable(
+                buffer,
+                rootOffset,
+                20,
               );
         object.user.targetId = const fb.Int64Reader().vTableGet(
           buffer,
@@ -334,6 +396,13 @@ obx_int.ModelDefinition getObjectBoxModel() {
           0,
         );
         object.user.attach(store);
+        object.location.targetId = const fb.Int64Reader().vTableGet(
+          buffer,
+          rootOffset,
+          18,
+          0,
+        );
+        object.location.attach(store);
         return object;
       },
     ),
@@ -349,7 +418,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
         final descriptionOffset = fbb.writeString(object.description);
         fbb.startTable(8);
         fbb.addInt64(0, object.id);
-        fbb.addInt64(1, object.amount);
+        fbb.addFloat64(1, object.amount);
         fbb.addOffset(2, descriptionOffset);
         fbb.addInt64(3, object.date.millisecondsSinceEpoch);
         fbb.addInt64(4, object.wallet.targetId);
@@ -367,7 +436,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
           4,
           0,
         );
-        final amountParam = const fb.Int64Reader().vTableGet(
+        final amountParam = const fb.Float64Reader().vTableGet(
           buffer,
           rootOffset,
           6,
@@ -517,6 +586,58 @@ obx_int.ModelDefinition getObjectBoxModel() {
         return object;
       },
     ),
+    LocationEntity: obx_int.EntityDefinition<LocationEntity>(
+      model: _entities[4],
+      toOneRelations: (LocationEntity object) => [],
+      toManyRelations: (LocationEntity object) => {},
+      getId: (LocationEntity object) => object.id,
+      setId: (LocationEntity object, int id) {
+        object.id = id;
+      },
+      objectToFB: (LocationEntity object, fb.Builder fbb) {
+        final addressOffset = fbb.writeString(object.address);
+        fbb.startTable(7);
+        fbb.addInt64(0, object.id);
+        fbb.addOffset(3, addressOffset);
+        fbb.addFloat64(4, object.latitude);
+        fbb.addFloat64(5, object.longitude);
+        fbb.finish(fbb.endTable());
+        return object.id;
+      },
+      objectFromFB: (obx.Store store, ByteData fbData) {
+        final buffer = fb.BufferContext(fbData);
+        final rootOffset = buffer.derefObject(0);
+        final idParam = const fb.Int64Reader().vTableGet(
+          buffer,
+          rootOffset,
+          4,
+          0,
+        );
+        final latitudeParam = const fb.Float64Reader().vTableGet(
+          buffer,
+          rootOffset,
+          12,
+          0,
+        );
+        final longitudeParam = const fb.Float64Reader().vTableGet(
+          buffer,
+          rootOffset,
+          14,
+          0,
+        );
+        final addressParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 10, '');
+        final object = LocationEntity(
+          id: idParam,
+          latitude: latitudeParam,
+          longitude: longitudeParam,
+          address: addressParam,
+        );
+
+        return object;
+      },
+    ),
   };
 
   return obx_int.ModelDefinition(model, bindings);
@@ -529,34 +650,45 @@ class SubscriptionEntity_ {
     _entities[0].properties[0],
   );
 
-  /// See [SubscriptionEntity.location].
-  static final location = obx.QueryStringProperty<SubscriptionEntity>(
-    _entities[0].properties[1],
-  );
-
   /// See [SubscriptionEntity.startDate].
   static final startDate = obx.QueryDateProperty<SubscriptionEntity>(
-    _entities[0].properties[2],
+    _entities[0].properties[1],
   );
 
   /// See [SubscriptionEntity.isActive].
   static final isActive = obx.QueryBooleanProperty<SubscriptionEntity>(
-    _entities[0].properties[3],
+    _entities[0].properties[2],
   );
 
   /// See [SubscriptionEntity.user].
   static final user = obx.QueryRelationToOne<SubscriptionEntity, UserEntity>(
-    _entities[0].properties[4],
+    _entities[0].properties[3],
   );
 
   /// See [SubscriptionEntity.dbPlan].
   static final dbPlan = obx.QueryIntegerProperty<SubscriptionEntity>(
-    _entities[0].properties[5],
+    _entities[0].properties[4],
   );
 
   /// See [SubscriptionEntity.dbBillingType].
   static final dbBillingType = obx.QueryIntegerProperty<SubscriptionEntity>(
-    _entities[0].properties[6],
+    _entities[0].properties[5],
+  );
+
+  /// See [SubscriptionEntity.location].
+  static final location =
+      obx.QueryRelationToOne<SubscriptionEntity, LocationEntity>(
+        _entities[0].properties[6],
+      );
+
+  /// See [SubscriptionEntity.dbBillingMethod].
+  static final dbBillingMethod = obx.QueryIntegerProperty<SubscriptionEntity>(
+    _entities[0].properties[7],
+  );
+
+  /// See [SubscriptionEntity.endDate].
+  static final endDate = obx.QueryDateProperty<SubscriptionEntity>(
+    _entities[0].properties[8],
   );
 }
 
@@ -568,7 +700,7 @@ class TransactionEntity_ {
   );
 
   /// See [TransactionEntity.amount].
-  static final amount = obx.QueryIntegerProperty<TransactionEntity>(
+  static final amount = obx.QueryDoubleProperty<TransactionEntity>(
     _entities[1].properties[1],
   );
 
@@ -654,4 +786,27 @@ class WalletEntity_ {
       obx.QueryRelationToMany<WalletEntity, TransactionEntity>(
         _entities[3].relations[0],
       );
+}
+
+/// [LocationEntity] entity fields to define ObjectBox queries.
+class LocationEntity_ {
+  /// See [LocationEntity.id].
+  static final id = obx.QueryIntegerProperty<LocationEntity>(
+    _entities[4].properties[0],
+  );
+
+  /// See [LocationEntity.address].
+  static final address = obx.QueryStringProperty<LocationEntity>(
+    _entities[4].properties[1],
+  );
+
+  /// See [LocationEntity.latitude].
+  static final latitude = obx.QueryDoubleProperty<LocationEntity>(
+    _entities[4].properties[2],
+  );
+
+  /// See [LocationEntity.longitude].
+  static final longitude = obx.QueryDoubleProperty<LocationEntity>(
+    _entities[4].properties[3],
+  );
 }

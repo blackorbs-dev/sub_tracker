@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sub_tracker/core/error/extensions.dart';
 import 'package:sub_tracker/core/util/response.dart';
-import '../../domain/repository/auth_repository.dart';
+import '../../domain/auth_repository.dart';
 import 'auth_event.dart';
 import 'auth_state.dart';
 

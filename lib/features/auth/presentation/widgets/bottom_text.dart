@@ -24,7 +24,7 @@ class BottomText extends StatelessWidget{
                   TextSpan(
                       text: text,
                       style: context.theme.textTheme.bodySmall
-                          .withColor(context.theme.colors.sidebarForeground)
+                          .withColor(context.theme.colors.foreground)
                   ),
                   TextSpan(
                       text: actionText,

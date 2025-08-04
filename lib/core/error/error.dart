@@ -1,3 +1,8 @@
+class CustomException implements Exception {
+  final String message;
+  const CustomException(this.message);
+}
+
 abstract class Error{}
 
 sealed class DataError implements Error {
@@ -5,6 +10,7 @@ sealed class DataError implements Error {
 
   const factory DataError.unknown() = UnknownError;
   const factory DataError.serialization() = SerializationError;
+  const factory DataError.platform() = Platform;
   const factory DataError.timeout() = TimeoutError;
   const factory DataError.invalidCredentials() = InvalidCredentialsError;
   const factory DataError.message(String message) = ErrorMessage;
@@ -16,6 +22,10 @@ class UnknownError extends DataError {
 
 class SerializationError extends DataError {
   const SerializationError();
+}
+
+class Platform extends DataError {
+  const Platform();
 }
 
 class TimeoutError extends DataError {

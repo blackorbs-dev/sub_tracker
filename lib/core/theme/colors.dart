@@ -1,8 +1,39 @@
 import 'package:flutter/material.dart';
 
+abstract class AppPalette {
+  // Root
+  static const Color background = Color(0xFFfafafa);
+  static const Color foreground = Color(0xFF0a0a0b);
+  static const Color card = Color(0xFFffffff);
+  static const Color primary = Color(0xFF8b5cf6);
+  static const Color primaryGlow = Color(0xFFa78bfa);
+  static const Color secondary = Color(0xFF27272a);
+  static const Color mutedForeground = Color(0xFFa1a1aa);
+  static const Color destructive = Color(0xFFef4444);
+  static const Color success = Color(0xFF16a34a);
+  static const Color warning = Color(0xFFf59e0b);
+  static const Color info = Color(0xFF0ea5e9);
+
+  // Sidebar
+  static const Color sidebarForeground = Color(0xFF404040);
+  static const Color sidebarPrimary = Color(0xFF171717);
+  static const Color sidebarAccent = Color(0xFFf4f4f5);
+  static const Color sidebarBorder = Color(0xFFe4e4e7);
+  static const Color sidebarRing = Color(0xFF3b82f6);
+
+  // Dark
+  static const Color darkBackground = Color(0xFF020617);
+  static const Color darkForeground = Color(0xFFf8fafc);
+  static const Color darkPrimaryForeground = Color(0xFF0f172a);
+  static const Color darkSecondary = Color(0xFF1e293b);
+  static const Color darkMutedForeground = Color(0xFF94a3b8);
+  static const Color darkDestructive = Color(0xFF7f1d1d);
+  static const Color darkRing = Color(0xFFcbd5e1);
+  static const Color darkSidebarForeground = Color(0xFFf1f5f9);
+}
+
 @immutable
 class AppColors extends ThemeExtension<AppColors> {
-  // Root Theme
   final Color background;
   final Color foreground;
   final Color card;
@@ -15,14 +46,12 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color warning;
   final Color info;
 
-  // Sidebar
   final Color sidebarForeground;
   final Color sidebarPrimary;
   final Color sidebarAccent;
   final Color sidebarBorder;
   final Color sidebarRing;
 
-  // Dark Theme
   final Color darkBackground;
   final Color darkForeground;
   final Color darkPrimaryForeground;
@@ -33,35 +62,32 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color darkSidebarForeground;
 
   const AppColors({
-    // Root
-    this.background = const Color(0xFFfafafa),
-    this.foreground = const Color(0xFF0a0a0b),
-    this.card = const Color(0xFF0a0a0b),
-    this.primary = const Color(0xFF8b5cf6),
-    this.primaryGlow = const Color(0xFFa78bfa),
-    this.secondary = const Color(0xFF27272a),
-    this.mutedForeground = const Color(0xFFa1a1aa),
-    this.destructive = const Color(0xFFef4444),
-    this.success = const Color(0xFF16a34a),
-    this.warning = const Color(0xFFf59e0b),
-    this.info = const Color(0xFF0ea5e9),
+    this.background = AppPalette.sidebarBorder,
+    this.foreground = AppPalette.darkPrimaryForeground,
+    this.card = AppPalette.card,
+    this.primary = AppPalette.primary,
+    this.primaryGlow = AppPalette.primaryGlow,
+    this.secondary = AppPalette.secondary,
+    this.mutedForeground = AppPalette.mutedForeground,
+    this.destructive = AppPalette.destructive,
+    this.success = AppPalette.success,
+    this.warning = AppPalette.warning,
+    this.info = AppPalette.info,
 
-    // Sidebar
-    this.sidebarForeground = const Color(0xFF404040),
-    this.sidebarPrimary = const Color(0xFF171717),
-    this.sidebarAccent = const Color(0xFFf4f4f5),
-    this.sidebarBorder = const Color(0xFFe4e4e7),
-    this.sidebarRing = const Color(0xFF3b82f6),
+    this.sidebarForeground = AppPalette.sidebarForeground,
+    this.sidebarPrimary = AppPalette.sidebarPrimary,
+    this.sidebarAccent = AppPalette.sidebarAccent,
+    this.sidebarBorder = AppPalette.sidebarBorder,
+    this.sidebarRing = AppPalette.sidebarRing,
 
-    // Dark Theme
-    this.darkBackground = const Color(0xFF020617),
-    this.darkForeground = const Color(0xFFf8fafc),
-    this.darkPrimaryForeground = const Color(0xFF0f172a),
-    this.darkSecondary = const Color(0xFF1e293b),
-    this.darkMutedForeground = const Color(0xFF94a3b8),
-    this.darkDestructive = const Color(0xFF7f1d1d),
-    this.darkRing = const Color(0xFFcbd5e1),
-    this.darkSidebarForeground = const Color(0xFFf1f5f9),
+    this.darkBackground = AppPalette.darkBackground,
+    this.darkForeground = AppPalette.darkForeground,
+    this.darkPrimaryForeground = AppPalette.darkPrimaryForeground,
+    this.darkSecondary = AppPalette.darkSecondary,
+    this.darkMutedForeground = AppPalette.darkMutedForeground,
+    this.darkDestructive = AppPalette.darkDestructive,
+    this.darkRing = AppPalette.darkRing,
+    this.darkSidebarForeground = AppPalette.darkSidebarForeground,
   });
 
   @override
@@ -69,40 +95,27 @@ class AppColors extends ThemeExtension<AppColors> {
     Color? background,
     Color? foreground,
     Color? card,
-    Color? cardForeground,
     Color? primary,
-    Color? primaryForeground,
     Color? primaryGlow,
     Color? secondary,
-    Color? secondaryForeground,
-    Color? muted,
     Color? mutedForeground,
-    Color? accent,
     Color? destructive,
     Color? success,
     Color? warning,
     Color? info,
-    Color? border,
-    Color? ring,
-
-    Color? sidebarBackground,
     Color? sidebarForeground,
     Color? sidebarPrimary,
     Color? sidebarAccent,
     Color? sidebarBorder,
     Color? sidebarRing,
-
     Color? darkBackground,
     Color? darkForeground,
-    Color? darkPrimary,
     Color? darkPrimaryForeground,
     Color? darkSecondary,
     Color? darkMutedForeground,
     Color? darkDestructive,
     Color? darkRing,
-    Color? darkSidebarBackground,
     Color? darkSidebarForeground,
-    Color? darkSidebarPrimary,
   }) {
     return AppColors(
       background: background ?? this.background,
@@ -116,21 +129,21 @@ class AppColors extends ThemeExtension<AppColors> {
       success: success ?? this.success,
       warning: warning ?? this.warning,
       info: info ?? this.info,
-
       sidebarForeground: sidebarForeground ?? this.sidebarForeground,
       sidebarPrimary: sidebarPrimary ?? this.sidebarPrimary,
       sidebarAccent: sidebarAccent ?? this.sidebarAccent,
       sidebarBorder: sidebarBorder ?? this.sidebarBorder,
       sidebarRing: sidebarRing ?? this.sidebarRing,
-
       darkBackground: darkBackground ?? this.darkBackground,
       darkForeground: darkForeground ?? this.darkForeground,
-      darkPrimaryForeground: darkPrimaryForeground ?? this.darkPrimaryForeground,
+      darkPrimaryForeground:
+      darkPrimaryForeground ?? this.darkPrimaryForeground,
       darkSecondary: darkSecondary ?? this.darkSecondary,
       darkMutedForeground: darkMutedForeground ?? this.darkMutedForeground,
       darkDestructive: darkDestructive ?? this.darkDestructive,
       darkRing: darkRing ?? this.darkRing,
-      darkSidebarForeground: darkSidebarForeground ?? this.darkSidebarForeground,
+      darkSidebarForeground:
+      darkSidebarForeground ?? this.darkSidebarForeground,
     );
   }
 
@@ -144,26 +157,31 @@ class AppColors extends ThemeExtension<AppColors> {
       primary: Color.lerp(primary, other.primary, t)!,
       primaryGlow: Color.lerp(primaryGlow, other.primaryGlow, t)!,
       secondary: Color.lerp(secondary, other.secondary, t)!,
-      mutedForeground: Color.lerp(mutedForeground, other.mutedForeground, t)!,
+      mutedForeground:
+      Color.lerp(mutedForeground, other.mutedForeground, t)!,
       destructive: Color.lerp(destructive, other.destructive, t)!,
       success: Color.lerp(success, other.success, t)!,
       warning: Color.lerp(warning, other.warning, t)!,
       info: Color.lerp(info, other.info, t)!,
-
-      sidebarForeground: Color.lerp(sidebarForeground, other.sidebarForeground, t)!,
+      sidebarForeground:
+      Color.lerp(sidebarForeground, other.sidebarForeground, t)!,
       sidebarPrimary: Color.lerp(sidebarPrimary, other.sidebarPrimary, t)!,
       sidebarAccent: Color.lerp(sidebarAccent, other.sidebarAccent, t)!,
       sidebarBorder: Color.lerp(sidebarBorder, other.sidebarBorder, t)!,
       sidebarRing: Color.lerp(sidebarRing, other.sidebarRing, t)!,
-
       darkBackground: Color.lerp(darkBackground, other.darkBackground, t)!,
       darkForeground: Color.lerp(darkForeground, other.darkForeground, t)!,
-      darkPrimaryForeground: Color.lerp(darkPrimaryForeground, other.darkPrimaryForeground, t)!,
+      darkPrimaryForeground:
+      Color.lerp(darkPrimaryForeground, other.darkPrimaryForeground, t)!,
       darkSecondary: Color.lerp(darkSecondary, other.darkSecondary, t)!,
-      darkMutedForeground: Color.lerp(darkMutedForeground, other.darkMutedForeground, t)!,
-      darkDestructive: Color.lerp(darkDestructive, other.darkDestructive, t)!,
+      darkMutedForeground:
+      Color.lerp(darkMutedForeground, other.darkMutedForeground, t)!,
+      darkDestructive:
+      Color.lerp(darkDestructive, other.darkDestructive, t)!,
       darkRing: Color.lerp(darkRing, other.darkRing, t)!,
-      darkSidebarForeground: Color.lerp(darkSidebarForeground, other.darkSidebarForeground, t)!,
+      darkSidebarForeground:
+      Color.lerp(darkSidebarForeground, other.darkSidebarForeground, t)!,
     );
   }
 }
+

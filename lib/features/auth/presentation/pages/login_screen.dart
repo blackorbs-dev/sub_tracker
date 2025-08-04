@@ -15,7 +15,7 @@ import '../widgets/bottom_text.dart';
 import '../widgets/header_box.dart';
 import '../widgets/input_title.dart';
 import '../widgets/scrollable_container.dart';
-import '../widgets/text_field.dart';
+import '../../../shared/widgets/text_field.dart';
 
 class LoginScreen extends StatelessWidget{
   const LoginScreen({super.key});
@@ -107,15 +107,15 @@ class LoginViewState extends State<LoginView>{
               ),
               Row(
                 children: [
-                  Expanded(child: Divider(color: context.theme.colors.darkMutedForeground,)),
+                  Expanded(child: Divider(color: context.theme.colors.foreground.withValues(alpha: 0.5),)),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Text(
                         'OR CONTINUE WITH', style: context.theme.textTheme.bodySmall
-                          .withColor(context.theme.colors.sidebarForeground),
+                          .withColor(context.theme.colors.foreground),
                     ),
                   ),
-                  Expanded(child: Divider(color: context.theme.colors.darkMutedForeground,)),
+                  Expanded(child: Divider(color: context.theme.colors.foreground.withValues(alpha: 0.5),)),
                 ],
               ),
               Padding(
@@ -125,7 +125,7 @@ class LoginViewState extends State<LoginView>{
                       context.read<LoginBloc>().add(BiometricLogin());
                     },
                     style: OutlinedButton.styleFrom(
-                      side: BorderSide(color: context.theme.colors.sidebarForeground),
+                      side: BorderSide(color: context.theme.colors.foreground),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                     ),
                     child: Row(

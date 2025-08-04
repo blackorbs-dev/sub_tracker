@@ -13,7 +13,7 @@ import '../widgets/bottom_text.dart';
 import '../widgets/header_box.dart';
 import '../widgets/input_title.dart';
 import '../widgets/scrollable_container.dart';
-import '../widgets/text_field.dart';
+import '../../../shared/widgets/text_field.dart';
 
 class SignupScreen extends StatelessWidget{
   const SignupScreen({super.key});

@@ -3,6 +3,6 @@ abstract class Screen{
   static const signup = '/signup';
   static const dashboard = '/dashboard';
   static const wallet = '/wallet';
-  static const subscription = '/subscription';
-  static const subscriptionHistory = '/subscriptionHistory';
+  static const subscribe = '/subscription';
+  static const subHistory = '/subHistory';
 }

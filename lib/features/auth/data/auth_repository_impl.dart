@@ -3,17 +3,25 @@ import '../../../core/service/biometric_auth.dart';
 import '../../../core/storage/secure_keys.dart';
 import '../../../core/storage/secure_storage.dart';
 import '../../../core/util/response.dart';
-import '../../shared/data/dao/user_dao.dart';
-import '../../shared/data/entities/user_entity.dart';
-import '../domain/models/auth_info.dart';
-import '../domain/repository/auth_repository.dart';
+import '../../shared/data/user_dao.dart';
+import '../../wallet/data/dao/wallet_dao.dart';
+import '../domain/auth_info.dart';
+import '../domain/auth_repository.dart';
+import 'auth_info_mapper.dart';
 
 class AuthRepositoryImpl extends AuthRepository{
   final UserDao _userDao;
+  final WalletDao _walletDao;
   final SecureStorage _secureStorage;
   final BiometricAuth _biometricAuth;
 
-  AuthRepositoryImpl(this._userDao, this._secureStorage, this._biometricAuth);
+  AuthRepositoryImpl({
+    required UserDao userDao,
+    required WalletDao walletDao,
+    required SecureStorage secureStorage, required BiometricAuth biometricAuth
+  }): _userDao = userDao, _walletDao = walletDao,
+        _secureStorage = secureStorage,
+        _biometricAuth = biometricAuth;
 
   @override
   Future<Response<Null, DataError>> login(AuthInfo authInfo) async{
@@ -22,6 +30,7 @@ class AuthRepositoryImpl extends AuthRepository{
     if(user == null || user.password != authInfo.password){
       return Response.error(DataError.invalidCredentials());
     }
+    await _secureStorage.write(SecureKeys.accessToken, user.id.toString());
     return Response.success(null);
   }
 
@@ -32,11 +41,8 @@ class AuthRepositoryImpl extends AuthRepository{
     if(user != null){
       return Response.error(DataError.message('User already exists'));
     }
-    final userId = _userDao.insert(UserEntity(
-      name: authInfo.name,
-      email: authInfo.email,
-      password: authInfo.password
-    ));
+    final userId = _userDao.insert(authInfo.toUserEntity());
+    _walletDao.credit(userId, 20, 'Sign Up Bonus');
     await _secureStorage.write(SecureKeys.accessToken, userId.toString());
     return Response.success(null);
   }

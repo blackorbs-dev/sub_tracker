@@ -1,4 +1,5 @@
 import 'package:local_auth/local_auth.dart';
+import 'package:sub_tracker/core/error/extensions.dart';
 
 class BiometricAuth {
   final LocalAuthentication _auth = LocalAuthentication();
@@ -20,7 +21,9 @@ class BiometricAuth {
           stickyAuth: true,
         ),
       );
-    } catch (_) {
+    } catch (e, stacktrace) {
+      e.printDebug(tag: 'BioMetric Error');
+      stacktrace.printDebug(tag: 'Stacktrace');
       return false;
     }
   }

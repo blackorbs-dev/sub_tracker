@@ -1,0 +1,3 @@
+enum BillingMethod{
+  userInitiated, autoRenewed
+}

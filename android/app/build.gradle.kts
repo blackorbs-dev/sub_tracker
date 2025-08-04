@@ -1,8 +1,23 @@
+import java.util.Base64
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
+}
+
+val dartEnvironmentVariables: Map<String, String> by lazy {
+    if (project.hasProperty("dart-defines")) {
+        val raw = project.property("dart-defines") as String
+        raw.split(",").associate { entry ->
+            val decoded = String(Base64.getDecoder().decode(entry), Charsets.UTF_8)
+            val pair = decoded.split("=")
+            pair.first() to pair.last()
+        }
+    } else {
+        emptyMap()
+    }
 }
 
 android {
@@ -30,6 +45,14 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        manifestPlaceholders.putAll(
+            mapOf(
+                "MAPS_API_KEY" to (dartEnvironmentVariables["MAPS_API_KEY"] ?: "")
+            )
+        )
+        ndk {
+            abiFilters.addAll(listOf("armeabi-v7a", "arm64-v8a"))
+        }
     }
 
     buildTypes {

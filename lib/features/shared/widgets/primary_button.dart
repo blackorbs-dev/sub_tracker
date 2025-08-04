@@ -9,12 +9,16 @@ class PrimaryButton extends StatelessWidget {
     this.enabled = true,
     required this.text,
     required this.onPressed,
+    this.foregroundColor,
+    this.backgroundColor,
   });
 
   final bool isLoading;
   final bool enabled;
   final String text;
   final VoidCallback onPressed;
+  final Color? foregroundColor;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +28,11 @@ class PrimaryButton extends StatelessWidget {
           style: FilledButton.styleFrom(
             fixedSize: const Size.fromHeight(48),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            foregroundColor: context.theme.colors.background,
-            backgroundColor: context.theme.colors.primary,
-            disabledForegroundColor: context.theme.colors.background,
-            disabledBackgroundColor: context.theme.colors.primaryGlow,
-            textStyle: context.theme.textTheme.bodySmall,
+            foregroundColor: foregroundColor ?? context.theme.colors.background,
+            backgroundColor: backgroundColor ?? context.theme.colors.foreground,
+            disabledForegroundColor: context.theme.colors.background.withValues(alpha: 0.6),
+            disabledBackgroundColor: context.theme.colors.foreground.withValues(alpha: 0.6),
+            textStyle: context.theme.textTheme.titleSmall,
           ),
           onPressed: (enabled && !isLoading) ? onPressed : null,
           child: AnimatedSwitcher(

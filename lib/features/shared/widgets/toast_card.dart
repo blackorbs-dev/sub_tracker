@@ -50,26 +50,26 @@ class _ToastCardState extends State<ToastCard> with SingleTickerProviderStateMix
         child: Material(
           elevation: 8,
           borderRadius: BorderRadius.circular(8),
-          color: theme.colors.primary,
+          color: theme.colors.secondary,
           child: Container(
             margin: const EdgeInsets.only(left: 4),
             padding: const EdgeInsets.symmetric(vertical: 4),
             decoration: BoxDecoration(
-              color: theme.colors.darkSidebarForeground,
+              color: theme.colors.sidebarBorder,
               borderRadius: BorderRadius.circular(8)
             ),
             child: Row(children: [
               Padding(
-                padding: const EdgeInsets.only(left: 12, right: 14),
-                child: SvgIcon('assets/icons/ic_check_circle.svg', color: theme.colors.primary,)
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: SvgIcon('assets/icons/ic_check_circle.svg', color: theme.colors.secondary,)
               ),
               Expanded(child: Text(
                 widget.message,
-                style: theme.textTheme.titleMedium?.copyWith(fontSize: 15),
+                style: theme.textTheme.titleSmall.withColor(theme.colors.secondary),
               )),
               IconButton(
                   onPressed: _controller.reverse,
-                  icon: const Icon(Icons.close)
+                  icon: Icon(Icons.close, color: theme.colors.secondary,)
               )
             ])
           ),

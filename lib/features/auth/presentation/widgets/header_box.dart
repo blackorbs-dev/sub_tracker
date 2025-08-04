@@ -14,8 +14,8 @@ class HeaderBox extends StatelessWidget{
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            context.theme.colors.primary,
-            context.theme.colors.primaryGlow
+            context.theme.colors.darkSecondary,
+            context.theme.colors.sidebarRing
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight
@@ -26,13 +26,13 @@ class HeaderBox extends StatelessWidget{
         children: [
           Text(
             'SubTracker', style: context.theme.textTheme.headlineMedium
-              .withColor(context.theme.colors.background),
+              .withColor(context.theme.colors.sidebarBorder),
           ),
           const SizedBox(height: 12),
           Text(
             'Manage your subscriptions smartly',
             style: context.theme.textTheme.bodyMedium
-              .withColor(context.theme.colors.background),
+              .withColor(context.theme.colors.sidebarBorder),
           )
         ],
       ),

@@ -15,7 +15,7 @@ const textTheme = TextTheme(
     ),
     titleLarge: TextStyle(
         fontSize: 20,
-        fontWeight: FontWeight.w500
+        fontWeight: FontWeight.w600
     ),
     titleMedium: TextStyle(
         fontSize: 17,
@@ -27,23 +27,23 @@ const textTheme = TextTheme(
     ),
     bodyLarge: TextStyle(
         fontSize: 18,
-        fontWeight: FontWeight.w400
+        fontWeight: FontWeight.w500
     ),
     bodyMedium: TextStyle(
         fontSize: 15,
-        fontWeight: FontWeight.w400
+        fontWeight: FontWeight.w500
     ),
     bodySmall: TextStyle(
         fontSize: 13,
-        fontWeight: FontWeight.w400
+        fontWeight: FontWeight.w500
     ),
     labelLarge: TextStyle(
         fontSize: 15,
-        fontWeight: FontWeight.w700
+        fontWeight: FontWeight.w600
     ),
     labelMedium: TextStyle(
         fontSize: 13,
-        fontWeight: FontWeight.w500
+        fontWeight: FontWeight.w600
     ),
     labelSmall: TextStyle(
         fontSize: 11,

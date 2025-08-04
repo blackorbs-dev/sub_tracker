@@ -45,5 +45,21 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+    <key>DART_DEFINES</key>
+    <string>$(DART_DEFINES)</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>This app needs access to your location</string>
+    <key>NSFaceIDUsageDescription</key>
+    <string>For security reasons, this app needs access to your face ID</string>
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>processing</string>
+        <string>fetch</string>
+    </array>
+    <key>BGTaskSchedulerPermittedIdentifiers</key>
+    <array>
+<!--        <string>subscription-one-off-task</string>-->
+        <string>subscription-periodic-task</string>
+    </array>
 </dict>
 </plist>
