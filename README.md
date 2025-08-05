@@ -140,14 +140,20 @@ flutter run --dart-define MAPS_API_KEY="YOUR_GOOGLE_MAPS_API_KEY"
 ## 📸 Screenshots
 
 ### Mobile (iPhone 16 Simulator)
-<img src="assets/screenshots/login-iphone.png" alt="Mobile Dashboard" width="350"> <img src="assets/screenshots/dashboard-iphone.png" alt="Mobile Dashboard" width="350"> <img src="assets/screenshots/wallet-iphone.png" alt="Mobile Dashboard" width="350"> 
-<img src="assets/screenshots/subscribe-iphone.png" alt="Mobile Dashboard" width="350"> <img src="assets/screenshots/map-iphone.png" alt="Mobile Dashboard" width="350">
+<div style="display: flex; overflow-x: auto; gap: 10px; padding: 10px;">
+    <img src="assets/screenshots/login-iphone.png" alt="Mobile Dashboard" width="350"/> 
+    <img src="assets/screenshots/dashboard-iphone.png" alt="Mobile Dashboard" width="350"/> 
+    <img src="assets/screenshots/wallet-iphone.png" alt="Mobile Dashboard" width="350"/> 
+    <img src="assets/screenshots/subscribe-iphone.png" alt="Mobile Dashboard" width="350"/> 
+    <img src="assets/screenshots/map-iphone.png" alt="Mobile Dashboard" width="350"/>
+</div>
 
 ### Tablet (Pixel Emulator Api 34)
-<img src="assets/screenshots/login-tablet.png" alt="Tablet Dashboard" width="650">
-<img src="assets/screenshots/dashboard-wallet-tablet.png" alt="Tablet Dashboard" width="650">
-<img src="assets/screenshots/dashboard-subscribe-tablet.png" alt="Tablet Dashboard" width="650">
-
+<div style="display: flex; overflow-x: auto; gap: 10px; padding: 10px;">
+    <img src="assets/screenshots/login-tablet.png" alt="Tablet Dashboard" width="650"/>
+    <img src="assets/screenshots/dashboard-wallet-tablet.png" alt="Tablet Dashboard" width="650"/>
+    <img src="assets/screenshots/dashboard-subscribe-tablet.png" alt="Tablet Dashboard" width="650"/>
+</div>
 ---
 
 ## 📜 Background Task Logs
