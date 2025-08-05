@@ -7,6 +7,7 @@ import '../features/auth/domain/auth_repository.dart';
 import '../features/shared/data/account_repository_impl.dart';
 import '../features/shared/data/app_database.dart';
 import '../features/shared/domain/account_repository.dart';
+import '../features/shared/presentation/cubit/home_cubit.dart';
 import '../features/subscription/data/repository/subscription_repository_impl.dart';
 import '../features/subscription/domain/repository/subscription_repository.dart';
 import '../features/wallet/data/repository/wallet_repository_impl.dart';
@@ -49,9 +50,16 @@ class DependencyContainer extends StatelessWidget{
               )
           ),
         ],
-        child: BlocProvider(
-          create: (context) => ThemeCubit(context.read()),
-          child: child,
+        child: MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => ThemeCubit(context.read()),
+              ),
+              BlocProvider(
+                create: (_) => HomeCubit(),
+              ),
+            ],
+            child: child
         )
     );
   }

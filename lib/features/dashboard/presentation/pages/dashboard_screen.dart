@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sub_tracker/core/theme/extensions.dart';
+import 'package:sub_tracker/core/util/extensions.dart';
 import 'package:sub_tracker/core/util/formatter.dart';
 import 'package:sub_tracker/features/dashboard/domain/subscription_overview.dart';
 import 'package:sub_tracker/features/dashboard/presentation/widgets/outlined_button.dart';
 import 'package:sub_tracker/features/dashboard/presentation/widgets/overview_item.dart';
 import 'package:sub_tracker/features/dashboard/presentation/widgets/current_sub_card.dart';
 import 'package:sub_tracker/features/dashboard/presentation/widgets/theme_toggle_switch.dart';
-import 'package:sub_tracker/features/shared/widgets/svg_icon.dart';
 import 'package:sub_tracker/router/routes.dart';
-
-import '../../../shared/widgets/center_text.dart';
+import '../../../shared/presentation/widgets/center_text.dart';
+import '../../../shared/presentation/widgets/svg_icon.dart';
 import '../cubit/dashboard_cubit.dart';
 
 class DashboardScreen extends StatelessWidget{
@@ -90,7 +90,7 @@ class DashboardView extends StatelessWidget{
                   ),),
                   OutlinedButtonSmall(
                       text: 'Manage',
-                      onPressed: (){ context.push(Screen.wallet); }
+                      onPressed: (){ context.safePush(Screen.wallet); }
                   )
                 ],
               ),
@@ -101,7 +101,7 @@ class DashboardView extends StatelessWidget{
                   child: OutlinedButtonLarge(
                       text: 'Manage Plan',
                       iconAsset: 'assets/icons/credit-card.svg',
-                      onPressed: (){ context.push(Screen.subscribe); }
+                      onPressed: (){ context.safePush(Screen.subscribe); }
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -109,7 +109,7 @@ class DashboardView extends StatelessWidget{
                   child: OutlinedButtonLarge(
                       text: 'View Locations',
                       iconAsset: 'assets/icons/map-pin.svg',
-                      onPressed: (){ context.push(Screen.subHistory); }
+                      onPressed: (){ context.safePush(Screen.subHistory); }
                   ),
                 ),
               ],

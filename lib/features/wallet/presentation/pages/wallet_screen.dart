@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sub_tracker/core/theme/extensions.dart';
 import 'package:sub_tracker/features/wallet/presentation/widgets/balance_box.dart';
-import 'package:sub_tracker/features/shared/widgets/center_text.dart';
 import 'package:sub_tracker/features/wallet/presentation/bloc/wallet_bloc.dart';
 import 'package:sub_tracker/features/wallet/presentation/widgets/add_fund_popup.dart';
 import 'package:sub_tracker/features/wallet/presentation/widgets/transaction_card.dart';
 
-import '../../../shared/widgets/svg_icon.dart';
+import '../../../shared/presentation/widgets/center_text.dart';
+import '../../../shared/presentation/widgets/svg_icon.dart';
 
 class WalletScreen extends StatelessWidget{
   const WalletScreen({super.key});

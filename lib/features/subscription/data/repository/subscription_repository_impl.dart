@@ -1,7 +1,7 @@
 import 'package:sub_tracker/core/storage/extension.dart';
 import '../../../../core/error/error.dart';
 import '../../../../core/storage/secure_storage.dart';
-import '../../../../core/util/location.dart';
+import '../../../../core/util/location_provider.dart';
 import '../../../../core/util/response.dart';
 import '../../../../core/util/safe_caller.dart';
 import '../../../wallet/data/dao/wallet_dao.dart';

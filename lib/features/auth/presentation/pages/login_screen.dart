@@ -3,11 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sub_tracker/core/service/toast_manager.dart';
 import 'package:sub_tracker/core/theme/extensions.dart';
+import 'package:sub_tracker/core/util/extensions.dart';
 import 'package:sub_tracker/core/util/input_validator.dart';
 
 import '../../../../router/routes.dart';
-import '../../../shared/widgets/primary_button.dart';
-import '../../../shared/widgets/svg_icon.dart';
+import '../../../shared/presentation/widgets/primary_button.dart';
+import '../../../shared/presentation/widgets/svg_icon.dart';
+import '../../../shared/presentation/widgets/text_field.dart';
 import '../bloc/auth_event.dart';
 import '../bloc/auth_state.dart';
 import '../bloc/login_bloc.dart';
@@ -15,7 +17,6 @@ import '../widgets/bottom_text.dart';
 import '../widgets/header_box.dart';
 import '../widgets/input_title.dart';
 import '../widgets/scrollable_container.dart';
-import '../../../shared/widgets/text_field.dart';
 
 class LoginScreen extends StatelessWidget{
   const LoginScreen({super.key});
@@ -52,7 +53,11 @@ class LoginViewState extends State<LoginView>{
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Hero(tag: 'header', child: HeaderBox()),
+              Hero(
+                  tag: 'header',
+                  child: context.isMobile ? const HeaderBox()
+                      : const HeaderTitle(text: 'Login')
+              ),
               const Hero(
                   tag: 'email_title',
                   child: InputTitle(text: 'Email')
@@ -84,7 +89,7 @@ class LoginViewState extends State<LoginView>{
                 child: BlocConsumer<LoginBloc, AuthState>(
                   listener: (context, state) {
                     if(state.isAuthenticated){
-                      context.go(Screen.dashboard);
+                      context.go(Screen.home);
                     }
                     else if(state.errorMessage != null){
                       ToastManager().show(context, state.errorMessage!);

@@ -5,7 +5,7 @@ import 'package:sub_tracker/core/util/response.dart';
 import 'package:sub_tracker/features/subscription/domain/models/subscription_plan.dart';
 import 'package:sub_tracker/features/subscription/domain/repository/subscription_repository.dart';
 
-import '../../../../core/util/object.dart';
+import '../../../../core/util/constants.dart';
 import '../../domain/models/billing_method.dart';
 import '../../domain/models/billing_type.dart';
 import '../../domain/models/subscription.dart';

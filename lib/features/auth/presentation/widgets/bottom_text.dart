@@ -29,7 +29,11 @@ class BottomText extends StatelessWidget{
                   TextSpan(
                       text: actionText,
                       style: context.theme.textTheme.titleSmall
-                          .withColor(context.theme.colors.foreground),
+                          ?.copyWith(
+                            decoration: TextDecoration.underline,
+                            color: context.theme.colors.foreground,
+                            fontWeight: FontWeight.w700
+                        ),
                       recognizer: TapGestureRecognizer()..onTap = onAction
                   )
                 ]

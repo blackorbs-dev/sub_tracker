@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 
-import '../../features/shared/widgets/toast_card.dart';
+import '../../features/shared/presentation/widgets/toast_card.dart';
 
 class ToastManager{
   static final ToastManager _instance = ToastManager._internal();

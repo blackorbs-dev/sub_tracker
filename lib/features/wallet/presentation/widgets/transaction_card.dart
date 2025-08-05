@@ -2,8 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:sub_tracker/core/theme/extensions.dart';
 import 'package:sub_tracker/core/util/formatter.dart';
 import 'package:sub_tracker/features/wallet/presentation/extensions.dart';
-
-import '../../../shared/widgets/svg_icon.dart';
+import '../../../shared/presentation/widgets/svg_icon.dart';
 import '../../domain/models/transaction.dart';
 
 class TransactionCard extends StatelessWidget{

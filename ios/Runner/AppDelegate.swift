@@ -3,6 +3,7 @@ import UIKit
 // This is required for calling FlutterLocalNotificationsPlugin.setPluginRegistrantCallback method.
 import flutter_local_notifications
 import workmanager_apple
+import GoogleMaps
 
 @main
 @objc class AppDelegate: FlutterAppDelegate {
@@ -37,7 +38,6 @@ import workmanager_apple
       // This will make other plugins available during a background operation.
       GeneratedPluginRegistrant.register(with: registry)
     }
-    // WorkmanagerPlugin.registerBGProcessingTask(withIdentifier: "subscription-one-off-task")
     WorkmanagerPlugin.registerPeriodicTask(
         withIdentifier: "subscription-periodic-task",
         frequency: NSNumber(value: 24 * 60 * 60) // Every 24 hours

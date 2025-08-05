@@ -2,10 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sub_tracker/core/service/toast_manager.dart';
 import 'package:sub_tracker/core/theme/extensions.dart';
-import 'package:sub_tracker/features/shared/widgets/primary_button.dart';
-
 import '../../../auth/presentation/widgets/input_title.dart';
-import '../../../shared/widgets/text_field.dart';
+import '../../../shared/presentation/widgets/primary_button.dart';
+import '../../../shared/presentation/widgets/text_field.dart';
 import '../bloc/wallet_bloc.dart';
 
 class AddFundPopup extends StatefulWidget {

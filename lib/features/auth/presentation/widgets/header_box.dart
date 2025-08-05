@@ -10,7 +10,6 @@ class HeaderBox extends StatelessWidget{
       margin: const EdgeInsets.only(bottom: 28),
       padding: const EdgeInsets.all(24),
       constraints: const BoxConstraints(maxWidth: 600),
-      alignment: Alignment.center,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
@@ -23,12 +22,13 @@ class HeaderBox extends StatelessWidget{
         borderRadius: BorderRadius.circular(12)
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            'SubTracker', style: context.theme.textTheme.headlineMedium
-              .withColor(context.theme.colors.sidebarBorder),
+          HeaderTitle(
+              text: 'SubTracker',
+              bottomPadding: 12,
+              color: context.theme.colors.sidebarBorder,
           ),
-          const SizedBox(height: 12),
           Text(
             'Manage your subscriptions smartly',
             style: context.theme.textTheme.bodyMedium
@@ -39,4 +39,24 @@ class HeaderBox extends StatelessWidget{
     );
   }
 
+}
+
+class HeaderTitle extends StatelessWidget{
+  const HeaderTitle({super.key, required this.text, this.bottomPadding = 28, this.color});
+
+  final String text;
+  final Color? color;
+  final double bottomPadding;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: bottomPadding),
+      child: Text(
+        text, textAlign: TextAlign.center,
+        style: context.theme.textTheme.headlineMedium
+          .withColor(color ?? context.theme.colors.foreground),
+      ),
+    );
+  }
 }

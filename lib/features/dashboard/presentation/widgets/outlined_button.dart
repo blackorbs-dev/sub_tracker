@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sub_tracker/core/theme/extensions.dart';
-import 'package:sub_tracker/features/shared/widgets/svg_icon.dart';
+import '../../../shared/presentation/widgets/svg_icon.dart';
 
 class OutlinedButtonLarge extends StatelessWidget{
   const OutlinedButtonLarge({super.key, required this.text, required this.iconAsset, required this.onPressed});

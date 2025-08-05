@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sub_tracker/core/service/toast_manager.dart';
+import 'package:sub_tracker/core/util/extensions.dart';
 import 'package:sub_tracker/core/util/input_validator.dart';
 
 import '../../../../router/routes.dart';
-import '../../../shared/widgets/primary_button.dart';
+import '../../../shared/presentation/widgets/primary_button.dart';
+import '../../../shared/presentation/widgets/text_field.dart';
 import '../bloc/auth_event.dart';
 import '../bloc/auth_state.dart';
 import '../bloc/signup_bloc.dart';
@@ -13,7 +15,6 @@ import '../widgets/bottom_text.dart';
 import '../widgets/header_box.dart';
 import '../widgets/input_title.dart';
 import '../widgets/scrollable_container.dart';
-import '../../../shared/widgets/text_field.dart';
 
 class SignupScreen extends StatelessWidget{
   const SignupScreen({super.key});
@@ -52,7 +53,11 @@ class SignupViewState extends State<SignupView>{
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Hero(tag: 'header', child: HeaderBox()),
+                    Hero(
+                        tag: 'header',
+                        child: context.isMobile ? const HeaderBox()
+                            : const HeaderTitle(text: 'Create Account')
+                    ),
                     const InputTitle(text: 'Name'),
                     TextInputField(
                       hint: 'Enter your name',
@@ -106,7 +111,7 @@ class SignupViewState extends State<SignupView>{
                         child: BlocConsumer<SignupBloc, AuthState>(
                           listener: (context, state) {
                             if(state.isAuthenticated){
-                              context.go(Screen.dashboard);
+                              context.go(Screen.home);
                             }
                             else if(state.errorMessage != null){
                               ToastManager().show(context, state.errorMessage!);

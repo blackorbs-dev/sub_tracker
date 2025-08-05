@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:sub_tracker/core/theme/colors.dart';
 import 'package:sub_tracker/core/theme/extensions.dart';
+import 'package:sub_tracker/core/util/extensions.dart';
 import 'package:sub_tracker/core/util/formatter.dart';
 import 'package:sub_tracker/features/dashboard/domain/current_subscription.dart';
-import 'package:sub_tracker/features/shared/widgets/slideup_anim.dart';
 import 'package:sub_tracker/features/subscription/data/repository/subscription_repository_impl.dart';
 import 'package:sub_tracker/features/subscription/domain/models/billing_type.dart';
 import 'package:sub_tracker/router/routes.dart';
 
-import '../../../shared/widgets/primary_button.dart';
+import '../../../shared/presentation/widgets/primary_button.dart';
+import '../../../shared/presentation/widgets/slideup_anim.dart';
 import '../../../subscription/presentation/extensions.dart';
 import '../cubit/dashboard_cubit.dart';
 
@@ -54,7 +54,7 @@ class CurrentSubCard extends StatelessWidget{
                       backgroundColor: context.theme.colors.sidebarBorder,
                       foregroundColor: context.theme.colors.darkSecondary,
                       onPressed: (){
-                        context.push(Screen.subscribe);
+                        context.safePush(Screen.subscribe);
                       },
                     )
                   ],

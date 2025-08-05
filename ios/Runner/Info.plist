@@ -58,7 +58,6 @@
     </array>
     <key>BGTaskSchedulerPermittedIdentifiers</key>
     <array>
-<!--        <string>subscription-one-off-task</string>-->
         <string>subscription-periodic-task</string>
     </array>
 </dict>

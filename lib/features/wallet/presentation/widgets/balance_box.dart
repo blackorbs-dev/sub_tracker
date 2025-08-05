@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:sub_tracker/core/theme/extensions.dart';
 import 'package:sub_tracker/core/util/formatter.dart';
-import 'package:sub_tracker/features/shared/widgets/slideup_anim.dart';
-
-import '../../../shared/widgets/svg_icon.dart';
+import '../../../shared/presentation/widgets/slideup_anim.dart';
+import '../../../shared/presentation/widgets/svg_icon.dart';
 
 class BalanceBox extends StatelessWidget{
   const BalanceBox({super.key, required this.balance, required this.balanceThisMonth});

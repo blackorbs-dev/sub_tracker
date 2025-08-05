@@ -1,11 +1,11 @@
 import 'package:go_router/go_router.dart';
+import 'package:sub_tracker/features/auth/presentation/pages/auth_container.dart';
+import 'package:sub_tracker/features/shared/presentation/pages/home_screen.dart';
 import 'package:sub_tracker/features/subscription/presentation/pages/sub_history_screen.dart';
 import 'package:sub_tracker/features/subscription/presentation/pages/subscribe_screen.dart';
 import 'package:sub_tracker/features/wallet/presentation/pages/wallet_screen.dart';
-
 import '../features/auth/presentation/pages/login_screen.dart';
 import '../features/auth/presentation/pages/signup_screen.dart';
-import '../features/dashboard/presentation/pages/dashboard_screen.dart';
 import 'routes.dart';
 import 'transition_builders.dart';
 
@@ -14,7 +14,10 @@ final router = GoRouter(
     routes: [
       ShellRoute(
         pageBuilder: (context, state, child) =>
-            fadeTransition(key: state.pageKey, child: child),
+            fadeTransition(
+                key: state.pageKey,
+                child: AuthContainer(child: child)
+            ),
         routes: [
           GoRoute(
               path: Screen.login,
@@ -33,10 +36,10 @@ final router = GoRouter(
         ],
       ),
       GoRoute(
-          path: Screen.dashboard,
+          path: Screen.home,
           pageBuilder: (context, state) => slideTransition(
               key: state.pageKey,
-              child: const DashboardScreen()
+              child: const HomeScreen()
           )
       ),
       GoRoute(

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sub_tracker/core/theme/extensions.dart';
 import 'package:sub_tracker/features/subscription/data/mapper/location_mapper.dart';
-import '../../../shared/widgets/center_text.dart';
+import '../../../shared/presentation/widgets/center_text.dart';
 import '../cubit/sub_history_cubit.dart';
 import '../widgets/sub_info_card.dart';
 
