@@ -161,7 +161,13 @@ flutter run --dart-define MAPS_API_KEY="YOUR_GOOGLE_MAPS_API_KEY"
 Console logs show background simulation activity:
 
 ```
-[WorkManager] Checking for expiring subscriptions...
-[WorkManager] Renewing subscription for user123...
-[WorkManager] Renewal failed: insufficient funds
+D/WM-WorkerWrapper(11267): Starting work for dev.fluttercommunity.workmanager.BackgroundWorker
+D/WM-SystemJobService(11267): onStartJob for WorkGenerationalId(workSpecId=cc0fc086-6559-45ce-846e-ac5721596490, generation=0)
+D/WM-Processor(11267): Work WorkGenerationalId(workSpecId=cc0fc086-6559-45ce-846e-ac5721596490, generation=0) is already enqueued for processing
+D/WM-SystemJobScheduler(11267): Scheduling work ID cc0fc086-6559-45ce-846e-ac5721596490Job ID 7
+D/WM-SystemJobService(11267): onStopJob for WorkGenerationalId(workSpecId=cc0fc086-6559-45ce-846e-ac5721596490, generation=0)
+I/WM-WorkerWrapper(11267): Worker result SUCCESS for Work [ id=baad0a27-7746-4267-a9c6-723065cb3466, tags={ dev.fluttercommunity.workmanager.BackgroundWorker } ]
+D/WM-Processor(11267): Processor baad0a27-7746-4267-a9c6-723065cb3466 executed; reschedule = false
+D/WM-SystemJobService(11267): baad0a27-7746-4267-a9c6-723065cb3466 executed on JobScheduler
+D/WM-GreedyScheduler(11267): Cancelling work ID baad0a27-7746-4267-a9c6-723065cb3466
 ```
