@@ -133,7 +133,9 @@ flutter run --dart-define MAPS_API_KEY="YOUR_GOOGLE_MAPS_API_KEY"
 
 ---
 
-## 📸 Screen Recording
+## 🎥 Demo Video
+
+[![Watch the demo](assets/screenshots/demo-thumbnail.png)](https://drive.google.com/file/d/1nzIiTaicC4u0XVI2jHVMWd-_yrk2Qp-x/view?usp=sharing)
 
 ---
 
